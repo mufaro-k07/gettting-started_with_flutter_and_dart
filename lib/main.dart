@@ -47,7 +47,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  // int _counter = 0; Removed as it is not needed now
   String _currentFortune = "";
 
   final _fortuneList = [
@@ -74,17 +74,17 @@ class _MyHomePageState extends State<MyHomePage> {
     print(_currentFortune);
   }
 
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+// Also removed the increment counter function
+  // void _incrementCounter() {
+  //   setState(() {
+  //     // This call to setState tells the Flutter framework that something has
+  //     // changed in this State, which causes it to rerun the build method below
+  //     // so that the display can reflect the updated values. If we changed
+  //     // _counter without calling setState(), then the build method would not be
+  //     // called again, and so nothing would appear to happen.
+  //     _counter++;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -124,20 +124,34 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Your fortune for today is: "
+              "Your fortune for today is: ",
+              // we want to style the way the text looks
+              style: TextStyle(
+                fontSize: 19,
+                fontWeight: FontWeight.bold
+              ) ,
             ),
-            Text(
-              '${_currentFortune}',
-              style: Theme.of(context).textTheme.headlineMedium,
+            Card (
+              // a child takes in a widget 
+              // we made a card to hold the fortune!
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                '{_currentFortune}',
+                style: Theme.of(context).textTheme.headlineMedium,
+                            ),
+              ),
             ),
+            ElevatedButton (onPressed: _randomFortune, child: Text("Get Fortune")),
+            
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _randomFortune,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _randomFortune,
+      //   tooltip: 'Increment',
+      //   child: const Icon(Icons.add),
+      // ),
     );
   }
 }

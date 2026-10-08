@@ -122,14 +122,20 @@ class _MyHomePageState extends State<MyHomePage> {
           // action in the IDE, or press "p" in the console), to see the
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Your fortune for today is: ",
-              // we want to style the way the text looks
-              style: TextStyle(
-                fontSize: 19,
-                fontWeight: FontWeight.bold
-              ) ,
+          children: <Widget>[
+            // Text(
+            //   "Your fortune for today is: ",
+            //   // we want to style the way the text looks
+            //   style: TextStyle(
+            //     fontSize: 19,
+            //     fontWeight: FontWeight.bold
+            //   ) ,
+            // ),
+            Image.asset(
+              'assets/images/fortune_cookie.png',
+              width: 200,
+              height: 200,
+              fit: BoxFit.cover,
             ),
             Card (
               // a child takes in a widget 

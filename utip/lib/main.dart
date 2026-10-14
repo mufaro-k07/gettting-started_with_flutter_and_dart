@@ -72,6 +72,58 @@ class UTipState extends State<UTip> {
                 ],
               )),
           ),
+          // Form
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              // width: 100,
+              // height: 100,
+              // removed the fixed height and width
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                border: Border.all(
+                  color: theme.colorScheme.primary,
+                  width: 2,
+                ),
+              ),
+              child: Column(
+                children: [
+                  TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(Icons.attach_money),
+                      labelText: 'Bill Amount',
+                    ),
+                    keyboardType: TextInputType.number,
+                    onChanged: (String value) {
+                      print("Value: $value");
+                    },
+                  ),
+                  // Split Bill Area
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Split',
+                      style: theme.textTheme.titleMedium,
+                      ),
+                      Row(
+                        children: [
+                          IconButton(
+                            color:theme.colorScheme.primary,
+                            onPressed: () => {}, icon: const Icon(Icons.remove)),
+                          Text("3",
+                          style: theme.textTheme.titleMedium,),
+                          IconButton(
+                            color:theme.colorScheme.primary,
+                            onPressed: () => {}, icon: const Icon(Icons.add)),
+                        ],
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );

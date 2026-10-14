@@ -37,9 +37,19 @@ class UTipState extends State<UTip> {
         // leading will be used to add something at the top left of the app bar, like a back button or a menu icon
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text ("Hello there"),
+          Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: Colors.deepPurple,
+              borderRadius: BorderRadius.circular(10)
+            ),
+            child: Column(
+              children: [
+                const Text ("Total Per Person"),
+                const Text ("\$23.89"),
+              ],
+            )),
         ],
       ),
     );

@@ -29,6 +29,23 @@ class UTip extends StatefulWidget {
 }
 
 class UTipState extends State<UTip> {
+  int _personCount = 1;
+
+  // Methods 
+  void increment() {
+    setState(() {
+      _personCount = _personCount + 1;
+    });
+  }
+  void decrement() {
+    if (_personCount > 0) {
+      setState(() {
+        _personCount--;
+      });
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -110,12 +127,12 @@ class UTipState extends State<UTip> {
                         children: [
                           IconButton(
                             color:theme.colorScheme.primary,
-                            onPressed: () => {}, icon: const Icon(Icons.remove)),
-                          Text("3",
+                            onPressed: decrement, icon: const Icon(Icons.remove)),
+                          Text("$_personCount",
                           style: theme.textTheme.titleMedium,),
                           IconButton(
                             color:theme.colorScheme.primary,
-                            onPressed: () => {}, icon: const Icon(Icons.add)),
+                            onPressed: increment, icon: const Icon(Icons.add)),
                         ],
                       )
                     ],

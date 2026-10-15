@@ -32,6 +32,8 @@ class UTip extends StatefulWidget {
 class UTipState extends State<UTip> {
   int _personCount = 1;
 
+  double _tipPercentage = 0.0;
+
   // Methods 
   void increment() {
     setState(() {
@@ -39,7 +41,7 @@ class UTipState extends State<UTip> {
     });
   }
   void decrement() {
-    if (_personCount > 0) {
+    if (_personCount > 1) {
       setState(() {
         _personCount--;
       });
@@ -126,14 +128,62 @@ class UTipState extends State<UTip> {
                       ),
                       PersonCounter(theme: theme, personCount: _personCount,
                       onDecrement: decrement, onIncrement: increment),
+
                     ],
-                  )
+                  ),
+                      // Tip Section
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('Tip',
+                          style: theme.textTheme.titleMedium,),
+                          Text("\$20",
+                          style: theme.textTheme.titleMedium,)
+                        ],
+                      ),
+
+                      // Slider Text
+                      Text('${(_tipPercentage * 100).round()}%'),
+
+                      // Tip Slider
+                      TipSlider(tipPercentage: _tipPercentage, onChanged: (double value) { 
+                        setState(() {
+                          _tipPercentage = value;
+                        });
+                       },)
                 ],
               ),
             ),
           )
         ],
       ),
+    );
+  }
+}
+
+class TipSlider extends StatelessWidget {
+  const TipSlider({
+    super.key,
+    required this._tipPercentage, required this.onChanged,
+  });
+
+  final double _tipPercentage;
+  final ValueChanged<double> onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return Slider(
+      value: _tipPercentage,
+      onChanged: onChanged,
+    //   onChanged:  (value) {
+    //     // setState(() {
+    //     //   _tipPercentage = value;
+    //     // });
+    // },
+    min: 0,
+    max: 0.5,
+    divisions: 5,
+    label: '${(_tipPercentage * 100).round()}%',
     );
   }
 }

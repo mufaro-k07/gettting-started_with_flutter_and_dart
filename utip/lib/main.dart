@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:utip/widgets/bill_amount_field.dart';
 import 'package:utip/widgets/person_counter.dart';
+import 'package:utip/widgets/tip_slider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -99,6 +101,7 @@ class UTipState extends State<UTip> {
               // width: 100,
               // height: 100,
               // removed the fixed height and width
+              padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 border: Border.all(
@@ -108,15 +111,10 @@ class UTipState extends State<UTip> {
               ),
               child: Column(
                 children: [
-                  TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      prefixIcon: Icon(Icons.attach_money),
-                      labelText: 'Bill Amount',
-                    ),
-                    keyboardType: TextInputType.number,
-                    onChanged: (String value) {
-                      print("Value: $value");
+                  BillAmountField(
+                    billAmount: "100",
+                    onChanged:(value) {
+                      print("Amount: $value");
                     },
                   ),
                   // Split Bill Area
@@ -161,30 +159,4 @@ class UTipState extends State<UTip> {
   }
 }
 
-class TipSlider extends StatelessWidget {
-  const TipSlider({
-    super.key,
-    required this._tipPercentage, required this.onChanged,
-  });
-
-  final double _tipPercentage;
-  final ValueChanged<double> onChanged;
-
-  @override
-  Widget build(BuildContext context) {
-    return Slider(
-      value: _tipPercentage,
-      onChanged: onChanged,
-    //   onChanged:  (value) {
-    //     // setState(() {
-    //     //   _tipPercentage = value;
-    //     // });
-    // },
-    min: 0,
-    max: 0.5,
-    divisions: 5,
-    label: '${(_tipPercentage * 100).round()}%',
-    );
-  }
-}
 
